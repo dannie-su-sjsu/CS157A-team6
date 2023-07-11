@@ -1,27 +1,27 @@
 <%@ page import="java.sql.*"%>
+<style><%@include file="/WEB-INF/css/style.css"%></style>
 <html>
   <head>
-    <title>Three Tier Architecture Demo</title>
-    </head>
+    <title>ToMovie Main Page</title>
+  </head>
   <body>
     <h1>JDBC Connection Example</h1>
-    
     <table border="1">
-      <tr>
+    	<tr>
         <td>SJSU ID</td>
         <td>Name</td>
         <td>Major</td>
-   </tr>
+    	</tr>
     <% 
-     String db = "Wu";
+     String db = "Silva";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "CS157A@sjsu";
+        String password = "Halo4mlg!";
         try {
             
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Wu?autoReconnect=true&useSSL=false",user, password);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Silva?autoReconnect=true&useSSL=false",user, password);
             out.println(db + " database successfully opened.<br/><br/>");
             
             out.println("Initial entries in table \"Student\": <br/>");
@@ -35,7 +35,12 @@
             con.close();
         } catch(SQLException e) { 
             out.println("SQLException caught: " + e.getMessage()); 
-        }
+        }  
     %>
+  </table>
   </body>
+  <div class="button-flex">
+  	<button class="button-container1">Login</button>
+  	<button class="button-container2">Sign Up</button>
+  </div>
 </html>
