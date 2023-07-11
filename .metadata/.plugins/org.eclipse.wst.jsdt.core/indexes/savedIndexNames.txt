@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/Users/sofiasilva/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2359173596.index
+3874742362.index
+1819568226.index
+1127884988.index
+1985824808.index
+1911682510.index
+555967179.index
