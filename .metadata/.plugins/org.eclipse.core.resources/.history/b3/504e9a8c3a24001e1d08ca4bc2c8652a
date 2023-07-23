@@ -1,0 +1,38 @@
+import java.io.*;
+
+public class MovieList implements Serializable {
+	private int movieID;
+	private String title;
+	private int year;
+
+	public MovieList(int movieID, String title, int year) {
+		super();
+		this.movieID = movieID;
+		this.title = title;
+		this.year = year;
+	}
+	public MovieList(String title) {
+		super();
+		this.title = title;
+	}
+	
+	public int getMovieID() {
+		return movieID;
+	}
+	public void setMovieID(int movieID) {
+		this.movieID = movieID;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+}

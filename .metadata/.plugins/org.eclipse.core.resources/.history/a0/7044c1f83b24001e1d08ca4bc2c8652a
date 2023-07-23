@@ -1,0 +1,55 @@
+import java.io.*;
+
+public class MovieList implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private int movieID;
+	private String title;
+	private int year;
+	private int queueID;
+	private String status;
+
+	public MovieList(int movieID, String title, int year) {
+		super();
+		this.movieID = movieID;
+		this.title = title;
+		this.year = year;
+	}
+	public MovieList(int queueID, String title, String status) {
+		super();
+		this.queueID = queueID;
+		this.title = title;
+		this.status = status;
+	}
+	
+	public int getMovieID() {
+		return movieID;
+	}
+	public void setMovieID(int movieID) {
+		this.movieID = movieID;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public int getQueueID() {
+		return queueID;
+	}
+	public void setQueueID(int queueID) {
+		this.queueID = queueID;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+}

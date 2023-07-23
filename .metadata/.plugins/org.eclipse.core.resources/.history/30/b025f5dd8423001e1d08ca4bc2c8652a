@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; \charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import = "java.sql.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MovieList</title>
+</head>
+<body>
+<%
+try{
+	//establishing connection with MySQL database
+	Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+	Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6","root","Halo4mlg!");			
+
+	//*** DISPLAYING MOVIE TABLE ***///
+	//check if Movie table is empty  
+	PreparedStatement display = con.prepareStatement("SELECT * FROM cs157aprojectteam6.Movie");				
+	ResultSet showDisplay = display.executeQuery();
+	
+}
+catch(Exception e){
+	e.getStackTrace();
+}
+%>
+<div align = left> 
+<h1>ToMovie Watchlist</h1>
+</div>
+Film Catalog
+
+<form action ="MovieServlet" method="post">
+<table>
+<tr><td> Movie title to add: </td><td><input type = text name = title></td></tr>
+<tr><td><input type = submit value = Add></td></tr>
+</table>
+</form>
+</body>
+</html>

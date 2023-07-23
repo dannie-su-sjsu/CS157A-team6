@@ -1,0 +1,38 @@
+import java.sql.*;
+/*connection = DriverManager.getConnection(jdbcURL, username, password);
+			// Importing Movie table info
+			String movieInfo = "SELECT * FROM cs157aprojectteam6.Movie;";
+			Statement statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(movieInfo);
+			//show available films
+			System.out.println("movieID" + "Title" +", "+ "Year Released");
+			while (result.next()) {
+				int movieID = result.getInt("movieID");
+				String title = result.getString("title");
+				int year = result.getInt("year");
+				System.out.println(movieID + ", " + title +", "+ year);
+				}
+ * 
+ */
+
+public class MovieManager {
+
+	public static void main(String[]args) {
+		//Set connection to MySQL
+		String jdbcURL ="jdbc:mysql://localhost:3306/cs157aprojectteam6";
+		String username = "root";
+		String password ="Halo4mlg!";
+
+		Connection connection;
+		try {
+			connection = DriverManager.getConnection(jdbcURL, username, password);
+			if(connection != null) {
+				System.out.println("Connection Successful");
+				connection.close(); // Close connection
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

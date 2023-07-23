@@ -1,0 +1,51 @@
+import java.sql.*;
+
+public class MovieDao {
+	
+	private static final String INSERT_TITLES_SQL = "INSERT INTO `cs157aprojectteam6`.`WatchList` (`listID`, `title`, `status`) VALUES ('?', '?', 'Planned')";
+	private static final String UPDATE_TITLES_SQL = "UPDATE `cs157aprojectteam6`.`WatchList` SET title=?, status=?,WHERE listID=?";
+
+	
+	//connection to database
+	protected Connection getConnection() {
+		Connection connection = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6","root","Halo4mlg!");		
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return connection;
+	}
+	
+	//insert movies into watchlist
+	public void insertMovie(MovieList movie)throws SQLException {
+		try(Connection connection= getConnection();
+				PreparedStatement preparedStatement =  connection.prepareStatement(INSERT_TITLES_SQL)){
+			preparedStatement.setLong(1,movie.getListID());
+			preparedStatement.setString(2,movie.getTitle());
+			preparedStatement.setString(3, movie.getStatus());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//update movies in watchlist
+	public boolean updateMovie(MovieList movie)throws SQLException {
+		boolean entryUpdated;
+		try(Connection connection= getConnection();
+				PreparedStatement preparedStatement =  connection.prepareStatement(UPDATE_TITLES_SQL)){
+			preparedStatement.setLong(1,movie.getListID());
+			preparedStatement.setString(2,movie.getTitle());
+			preparedStatement.setString(3, movie.getStatus());
+			
+			entryUpdated = preparedStatement.executeUpdate()>0;
+		
+		return entryUpdated;
+		}
+	}
+	
+
+}
