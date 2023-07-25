@@ -53,7 +53,7 @@ catch(Exception e){
 
 <%-- Displaying Watchlist --%>
 <h2>Watchlist</h2>
-<h3><a href = "addFilm.jsp">View Full Film Descriptions</a></h3>
+<h3><a href = "addFilm.jsp">Add Film to Watchlist</a></h3>
 <table border="2" width="100%">
     <tr>
         <th>Queue #</th>
