@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; \charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import = "java.sql.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style><%@include file="/WEB-INF/css/style.css"%></style>
+<title>MovieList</title>
+</head>
+<body>
+<header><h1>ToMovie</h1></header>
+<article><h2>Watchlist</h2></article>
+<article><h2>Film Catalog</h2></article>
+
+<%
+//*** CONNECTING TO DATABASE ***///
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6","root","Halo4mlg!");			
+%>
+
+<%//*** DISPLAYING MOVIE TABLE ***///
+try{
+	PreparedStatement display = con.prepareStatement("SELECT * FROM cs157aprojectteam6.Movie");				
+	ResultSet showDisplay = display.executeQuery();
+	if(showDisplay.next()==false){
+		out.println("No movies in the database");
+	}
+	else{%>
+		<div class= "table_mod1">
+			<table>
+			<tr><th>ID</th><th>Title</th><th>Year Released</th></tr> <%
+			do
+			{ %>
+				<tr><td><%= showDisplay.getString(1) %></td><td><%= showDisplay.getString(2) %></td><td><%= showDisplay.getString(3) %></td></tr><%
+			}while(showDisplay.next());%>
+			</table>
+		</div><% 
+	}
+}
+catch(Exception e){
+	e.getStackTrace();
+}
+%>
+
+<%//*** ADDING FILMS ***///%>
+<form action ="MovieServlet" method="post"><br>
+<table>
+<tr><td> Add Title to Watchlist: </td><td><input type = text name = title></td></tr>
+<tr><td><input type = submit value = Add></td></tr>
+</table>
+</form>
+<%//*** DISPLAYING WATCHLIST ***///
+try{
+	PreparedStatement display = con.prepareStatement("SELECT * FROM cs157aprojectteam6.WatchList;");				
+	ResultSet showDisplay = display.executeQuery();
+	%>
+		<div class= "table_mod1">
+			<table>
+			<tr><th>Queue</th><th>Title</th><th>Status</th></tr> <%
+			do
+			{ %>
+				<tr><td><%= showDisplay.getString(1) %></td><td><%= showDisplay.getString(2) %></td><td><%= showDisplay.getString(3) %></td></tr><%
+			}while(showDisplay.next());%>
+			</table>
+		</div><% 
+}
+catch(Exception e){
+	e.getStackTrace();
+}
+%>
+
+</body>
+</html>

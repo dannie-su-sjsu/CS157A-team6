@@ -65,4 +65,20 @@ public class MovieDao {
 			}
 			return catalog;
 		}
+	//Method adds film into Watchlist
+	public static int insertFilm(MovieList w) {
+		int entry = 0;
+		try {
+			Connection con3 = MovieDao.getConnection();
+			PreparedStatement c3 = con3.prepareStatement("INSERT INTO `cs157aprojectteam6`.`WatchList` (title, status) VALUES (?, ?)");
+			c3.setString(1,w.getTitle());  
+            c3.setString(2,w.getStatus());
+            
+            entry = c3.executeUpdate();
+            con3.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return entry;
+	}
 }

@@ -1,0 +1,91 @@
+import java.io.*;
+import java.sql.*;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class MovieServlet
+ */
+@WebServlet("/MovieServlet")
+public class MovieServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MovieServlet() {
+        super();
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out =response.getWriter();
+		
+		List <MovieList> list =MovieDao.getWatchlist();
+		
+		out.print("<table border='1' width='100%'");  
+	    out.print("<tr><th>Queue #</th><th>Title</th><th>Status</th><th>Edit</th><th>Delete</th></tr>");  
+	        for(MovieList w:list){  
+	        	out.print("<tr><td>" + w.getListID() + "</td><td>"+ w.getTitle() + "</td><td>"+w.getStatus()+"</td>");
+	        }  
+	    out.print("</table>");  
+	    out.close();
+	    RequestDispatcher r = getServletContext().getRequestDispatcher("movie.jsp");
+	    r.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*int listID = Integer.parseInt(request.getParameter("listID"));
+		String title = request.getParameter("title");
+		String status = request.getParameter("status");
+		MovieList movie = new MovieList();
+		movie.setListID(listID);
+		movie.setTitle(title);
+		movie.setStatus(status);
+		*/
+		/*
+		try {
+			PrintWriter out = response.getWriter();
+			//Connection with MySQL Database
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6","root","Halo4mlg!");			
+			
+			
+			//*** SHOWS IF FILM LIST GETS UPDATED ***/
+			//moviedao.insertMovie(movie);
+			
+			//*** CHECKING IF FILM IS AVALIABLE ***///
+			//checking if title is in the Movie table, cannot add film if not in table
+			//String n = request.getParameter("title");
+		//	PreparedStatement ps = con.prepareStatement("SELECT title FROM cs157aprojectteam6.Movie WHERE title=?");				
+		//	ps.setString(1,n);
+		//	ResultSet rs1 = ps.executeQuery();
+			//redirects to another page if successful
+		//	if(rs1.next()) {
+		//		RequestDispatcher rd =request.getRequestDispatcher("welcome.jsp");
+		////		rd.forward(request, response);
+			//	out.println("<font color=green size=18> Movie title is available<br>");
+		//	}
+		//	else { //redirect if title not in Movie table
+		//		out.println("<font color=red size=18> Movie title is not avaliable<br>");
+		//	}
+		//} catch (ClassNotFoundException | SQLException e) {
+		//	e.printStackTrace();
+		//}
+		//RequestDispatcher rdAdd = request.getRequestDispatcher("movie.jsp");
+		//rdAdd.forward(request,response);
+		
+	}
+

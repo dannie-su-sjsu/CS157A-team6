@@ -1,0 +1,70 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class MovieServlet
+ */
+@WebServlet("/MovieServlet")
+public class MovieServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MovieServlet() {
+        super();
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			PrintWriter out = response.getWriter();
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6","root","Halo4mlg!");
+			String n = request.getParameter("title");
+			
+			//checking if title is in the Movie table
+			PreparedStatement ps = con.prepareStatement("SELECT title FROM cs157aprojectteam6.Movie WHERE title=?");				
+			ps.setString(1,n);
+			ResultSet rs = ps.executeQuery();
+			
+			//redirects to another page if successful
+			if(rs.next()) {
+				out.println("<font color=green size=18> Movie title is avaliable<br>");
+				RequestDispatcher rd=request.getRequestDispatcher("movie.jsp");
+				rd.forward(request, response);
+				out.println("<font color=green size=18> Movie title is avaliable<br>");
+
+			}
+			else { //redirect if title not in Movie table
+				out.println("<font color=red size=18> Movie title is not avaliable<br>");
+				//out.println("<a href = movie.jsp>Choose a film from our database</a>");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.button-container {
+	background-color: #CC6600;
+  	color: #1E1E1E;
+  	text-align: center;
+  	font-size: 36px;
+  	font-family: Jockey One;
+	width: 16.1875rem;
+	height: 5.875rem;
+}

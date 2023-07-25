@@ -1,0 +1,23 @@
+import java.sql.*;
+
+public class MovieDao {
+	
+	//inserting film to watchlist
+	public void insertMovie(MovieList movie)throws SQLException, ClassNotFoundException {
+	String UPDATE_WATCHLIST = "INSERT INTO `cs157aprojectteam6`.`WatchList` (`listID`, `title`, `status`) VALUES ('?', '?', '?')";
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	
+	//connection to database
+	try (Connection connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6","root","Halo4mlg!");	
+		//creating statement using connection object
+		PreparedStatement preparedStatement =  connection.prepareStatement(UPDATE_WATCHLIST)){
+		preparedStatement.setInt(1,movie.getListID());
+		preparedStatement.setString(2,movie.getTitle());
+		preparedStatement.setString(3, movie.getStatus());
+		System.out.println(preparedStatement);
+	
+	}catch(SQLException e) {
+		e.printStackTrace();
+	}
+	}
+}

@@ -1,0 +1,79 @@
+import java.io.*;
+import java.sql.*;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class MovieServlet
+ */
+@WebServlet("/MovieServlet")
+public class MovieServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private MovieDao moviedao = new MovieDao();
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MovieServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int listID = Integer.parseInt(request.getParameter("listID"));
+		String title = request.getParameter("title");
+		String status = request.getParameter("status");
+		
+		MovieList movie = new MovieList();
+		movie.setListID(listID);
+		movie.setTitle(title);
+		movie.setStatus(status);
+		
+		
+		try {
+			PrintWriter out = response.getWriter();
+			//Connection with MySQL Database
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6","root","Halo4mlg!");			
+					
+			//*** ADDING FILM TO WATCHLIST ***///
+			moviedao.insertMovie(movie);
+			
+			//*** CHECKING IF FILM IS AVALIABLE ***///
+			//checking if title is in the Movie table, cannot add film if not in table
+			String n = request.getParameter("title");
+			PreparedStatement ps = con.prepareStatement("SELECT title FROM cs157aprojectteam6.Movie WHERE title=?");				
+			ps.setString(1,n);
+			ResultSet rs1 = ps.executeQuery();
+			//redirects to another page if successful
+			if(rs1.next()) {
+				RequestDispatcher rd =request.getRequestDispatcher("welcome.jsp");
+				rd.forward(request, response);
+				out.println("<font color=green size=18> Movie title is available<br>");
+			}
+			else { //redirect if title not in Movie table
+				out.println("<font color=red size=18> Movie title is not avaliable<br>");
+				//out.println("<a href = movie.jsp>Choose a film from our database</a>");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		response.sendRedirect("movieAdd.jsp");
+	}
+}

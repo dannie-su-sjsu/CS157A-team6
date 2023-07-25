@@ -87,6 +87,4 @@ $RECYCLE.BIN/
 *.lnk
 
 *currently in repo
-.project/
-.metadata/
 ToMovie/.DS_Store

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+.button-container {
+	background-color: #C60;
+	padding: 15px 32px;
+  	color: #1E1E1E;
+  	text-align: center;
+  	font-size: 36px;
+}
+.button-flex{
+	display:flex;
+}
+
+.spaceButton{
+	margin:25px;
+}
