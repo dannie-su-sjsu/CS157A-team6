@@ -1,16 +1,51 @@
 <html>
+   <style>
+      div 
+      {
+         background-color: #fdebb5;
+         border-width: 50px;
+         border-style: solid;
+         border-color: #ea8607;
+      }
+      h1
+      {
+         font-size: 80px;
+         font-family: Jockey One;
+      }
+      form
+      {
+         font-size: 30px;
+         font-family: Jockey One;
+      }
+      button
+      {
+         font-size: 30px;
+         font-family: Jockey One;
+         background-color: #ea8607;
+         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+      label
+      {
+      	font-size: 30px;
+      	font-family: Jockey One;
+      }
+   </style>
 	<head>
 		<title>Login Page</title>
 	</head>
 	<body>
-		<h1>Login</h1>
+		<div>
+			<center>
+				<h1>Login</h1>
 
-		<form action="login.jsp" method = "post">
-			<label for = "profile">Profile name:</label><br>
-			<input type = "text" id = "profile" name = "profile" required><br>
-			<label for = "zip">ZIP:</label><br>
-			<input type = "text" id = "zip" name = "zip" required><br><br>
-			<input type = "submit" value = "Login">
-		</form>
+				<form action="login.jsp" method = "post">
+					<label for = "profile">Profile name:</label><br>
+					<input type = "text" id = "profile" name = "profile" required><br><br>
+					<label for = "zip">ZIP:</label><br>
+					<input type = "text" id = "zip" name = "zip" required><br><br>
+					<button type = "submit" value = "login">Login</button>
+				</form>
+			</center>
+		</div>
 	</body>
 </html>
