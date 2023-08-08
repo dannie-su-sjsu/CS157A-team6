@@ -75,8 +75,9 @@
         	%>
                 </h1>
         	<br>
-        	   <a href="search.html">Search</a><br><br>
+        	   <a href="recommendation.jsp">Search for Movies</a><br><br>
         	   <a href="watchlist.html">Watch List</a><br><br>
+               <a href="theater.html">Look for nearby Theaters</a><br><br>
             </div>
         </center>
 	</body>

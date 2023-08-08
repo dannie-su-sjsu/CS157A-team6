@@ -1,0 +1,63 @@
+<html>
+	<style>
+    	div 
+    	{
+    	background-color: #fdebb5;
+		border-width: 50px;
+		border-style: solid;
+		border-color: #ea8607;
+		}
+      h1
+      {
+         font-size: 80px;
+         font-family: Jockey One;
+      }
+      form
+      {
+         font-size: 30px;
+         font-family: Jockey One;
+      }
+      button
+      {
+         font-size: 30px;
+         font-family: Jockey One;
+         background-color: #ea8607;
+         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+		a
+      {
+         font-size: 30px;
+         font-family: Jockey One;
+         background-color: #ea8607;
+         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+      label
+      {
+      	font-size: 30px;
+      	font-family: Jockey One;
+      }
+	</style>
+	<head>
+		<title> Theater Search</title>
+	</head>
+	<body>
+		<center>
+			<div>
+			<h1>Theaters nearby</h1>			
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50761.84066449686!2d-121.9553174718142!3d37.327945407662476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcdcc7b583a49%3A0xdf4405d71e8629ed!2sIMAX%20Dome%20Theater!5e0!3m2!1sen!2sus!4v1691474399787!5m2!1sen!2sus" 
+				width="600" 
+				height="450" 
+				style="border:0;" a
+				llowfullscreen="" 
+				loading="lazy" 
+				referrerpolicy="no-referrer-when-downgrade">
+				</iframe>
+				<br><br>
+         <form action = "recommendation.jsp" method="get" id="search_movie">
+            <label for="title"></label>
+            <button type = "submit" value = "search">Search for Movies</button>
+         </form>
+			</div>
+		</center>
+	</body>
+</html>
