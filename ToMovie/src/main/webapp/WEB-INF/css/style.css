@@ -33,10 +33,16 @@
 }
 header {
   background-color: #C60;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   font-size: 30px;
   font-family: Jockey One;
   color: white;
 }
-
+.highlight {
+    background-color: yellow;
+}
+.center-table {
+            margin: 0 auto;
+            text-align: center;
+}

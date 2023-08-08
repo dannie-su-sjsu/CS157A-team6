@@ -23,11 +23,15 @@ DROP TABLE IF EXISTS `WatchList`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `WatchList` (
-  `listID` int NOT NULL,
+  `listID` int NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
-  `status` varchar(45) DEFAULT 'PLANNED',
-  PRIMARY KEY (`listID`,`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `status` varchar(45) DEFAULT NULL,
+  `MovieID` int DEFAULT NULL,
+  PRIMARY KEY (`title`),
+  UNIQUE KEY `listID_UNIQUE` (`listID`),
+  KEY `FK_MovieDetail` (`MovieID`),
+  CONSTRAINT `FK_MovieDetail` FOREIGN KEY (`MovieID`) REFERENCES `MovieDetail` (`movieID`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +40,7 @@ CREATE TABLE `WatchList` (
 
 LOCK TABLES `WatchList` WRITE;
 /*!40000 ALTER TABLE `WatchList` DISABLE KEYS */;
-INSERT INTO `WatchList` VALUES (1,'Titanic','Planned');
+INSERT INTO `WatchList` VALUES (23,'Creed III','In Progress',2),(24,'John Wick: Chapter 4','Watched',3),(26,'Spider-Man: Across the Spider-Verse','Planned',4);
 /*!40000 ALTER TABLE `WatchList` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-22 23:55:56
+-- Dump completed on 2023-08-08 13:06:28

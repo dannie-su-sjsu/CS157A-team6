@@ -37,46 +37,50 @@
     </head>
     <body>
         <center>
-            <div>
+              <div>
                 <h1>
-            <%
-                String profile = request.getParameter("profile");
-                String zip = request.getParameter("zip");
-                String db = "cs157aprojectteam6";
-                String user; // assumes database name is the same as username
-                    user = "root";
-                String password = "Halo4mlg!"; //Change password if needed
+                <%
+                    String profile = request.getParameter("profile");
+                    String zip = request.getParameter("zip");
+                    String db = "cs157aprojectteam6"; // May be different
+                    String user = "root";
+                    String password = "Halo4mlg!"; // Change password if needed
 
-                try
-                {  
-                    java.sql.Connection con; 
-                    Class.forName("com.mysql.jdbc.Driver");
-                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6?autoReconnect=true&useSSL=false",user, password);
-                    Statement stmt = con.createStatement();
-                    ResultSet rs = stmt.executeQuery("SELECT * FROM User WHERE profileName = '" + profile + "'");
-                    if (rs.next()) 
-                    {
-                    	if(rs.getString(3).equals(zip))
-                    	{
-                    		out.println("Welcome " + profile);
-                    	}
+                    try
+                    {  
+                        java.sql.Connection con; 
+                        Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs157aprojectteam6?autoReconnect=true&useSSL=false", user, password);
+                        PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Users WHERE profileName = ?");
+                        pstmt.setString(1, profile);
+                        ResultSet rs = pstmt.executeQuery();
+                        
+                        if (rs.next()) 
+                        {
+                            if (rs.getString("zip").equals(zip)) {
+                                out.println("Welcome " + profile);
+                            } else {
+                                out.println("Invalid zip code for the profile name.");
+                            }
+                        }
+                        else
+                        {
+                            out.println("Invalid profile name.");
+                        }
+                        
+                        rs.close();
+                        pstmt.close();
+                        con.close();
+                    } 
+                    catch(SQLException e) { 
+                        out.println("SQLException caught: " + e.getMessage()); 
                     }
-                    else
-                    {
-                        out.println("Invalid profile name");
-                    }
-                    rs.close();
-                    stmt.close();
-                    con.close();
-                } 
-                catch(SQLException e) { 
-                    out.println("SQLException caught: " + e.getMessage()); 
-                }
-        	%>
+                %>
                 </h1>
-        	<br>
-        	   <a href="search.html">Search</a><br><br>
-        	   <a href="watchlist.jsp">WatchList</a><br><br>
+        	    <br>
+        	    <a href="recommendation.jsp">Search for Movies</a><br><br>
+        	    <a href="movie.jsp">Watch List</a><br><br>
+                <a href="theater.html">Look for nearby Theaters</a><br><br>
             </div>
         </center>
 	</body>

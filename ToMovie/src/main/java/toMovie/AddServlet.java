@@ -34,26 +34,27 @@ public class AddServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    response.setContentType("text/html");  
-	    PrintWriter out = response.getWriter();
-	    
-	    //Adding film to watchlist, communicating with addFilm.jsp
-	   // int listID = Integer.parseInt(request.getParameter("listID"));
-	    String title = request.getParameter("title");
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+
+	    // Adding film to watchlist, communicating with addFilm.jsp
+	    int movieID = Integer.parseInt(request.getParameter("movieID")); // Fetch selected movieID
 	    String status = request.getParameter("status");
-	    
+
+	    // Fetch the movie title using the MovieID
+	    String title = MovieDao.getMovieTitleByID(movieID);
+
 	    MovieList w = new MovieList();
-	   // w.setListID(listID);
+	    w.setMovieID(movieID);
 	    w.setTitle(title);
 	    w.setStatus(status);
-	    
+
 	    int entry = MovieDao.insertFilm(w);
-	    if(entry>0) {
-	    	out.print("<p>Movie added to your ToMovie Watchlist!");
-	    	request.getRequestDispatcher("addFilm.jsp").include(request, response);  
-	    }
-	    else {
-	    	out.println("Unable to add film do database :(");
+	    if (entry > 0) {
+	        out.print("<p>Movie added to your ToMovie Watchlist!");
+	        request.getRequestDispatcher("addFilm.jsp").include(request, response);
+	    } else {
+	        out.println("Unable to add film to the database :(");
 	    }
 	    out.close();
 	}

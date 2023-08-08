@@ -15,6 +15,13 @@ public class MovieList implements Serializable {
 	private String actorName;
 	private int yearBorn;
 	private String directorName;
+	private String description;
+	private String comment;
+	private int rating;
+	private int searchID;
+	private String TheaterName;
+	private int zip;
+	
 	
 	public MovieList() {
 		super();
@@ -40,6 +47,27 @@ public class MovieList implements Serializable {
 		this.actorName = actorName;
 		this.yearBorn = yearBorn;
 	}
+	
+	public MovieList(int movieID, String title, String description, int rating, String comment) {
+		super();
+		this.movieID = movieID;
+		this.title = title;
+		this.description = description;
+		this.rating = rating;
+		this.comment = comment;
+	}
+	public MovieList(String theaterName,int zip) {
+		super();
+		this.TheaterName = theaterName;
+		this.zip = zip;
+	}
+	
+	public MovieList(int searchID, String title) {
+		super();
+		this.searchID = searchID;
+		this.title = title;
+	}
+	
 	public int getMovieID() {
 		return movieID;
 	}
@@ -107,6 +135,54 @@ public class MovieList implements Serializable {
 
 	public void setDirectorName(String directorName) {
 		this.directorName = directorName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public int getSearchID() {
+		return searchID;
+	}
+
+	public void setSearchID(int searchID) {
+		this.searchID = searchID;
+	}
+
+	public String getTheaterName() {
+		return TheaterName;
+	}
+
+	public void setTheaterName(String theaterName) {
+		TheaterName = theaterName;
+	}
+
+	public int getZip() {
+		return zip;
+	}
+
+	public void setZip(int zip) {
+		this.zip = zip;
 	}
 
 }
