@@ -41,37 +41,59 @@
 		<title>Sign up</title>
 	</head>
 	<body>
-        <div>
+   <div>
             <center>
                 <h1>
-            	<%
-            		String profile = request.getParameter("profile");
-            		String zip = request.getParameter("zip");
-            		String db = "ToMovie";
-                	String user; // assumes database name is the same as username
-                        user = "root";
-                    String password = "Password"; // Change password if needed
+                <%
+                    String profile = request.getParameter("profile");
+                    String zip = request.getParameter("zip");
+                    String db = "jdbc:mysql://localhost:3306/cs157aprojectteam6?autoReconnect=true&useSSL=false";
+                    String user = "root";
+                    String password = "Halo4mlg!";
+                    boolean success = false;
 
-                    try
-                    {  
-                        java.sql.Connection con; 
-                        Class.forName("com.mysql.jdbc.Driver");
-                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToMovie?autoReconnect=true&useSSL=false",user, password);
-                        Statement stmt = con.createStatement();
-                        int rs = stmt.executeUpdate("INSERT into User (profileName, zip) VALUES ('" + profile + "'," + zip + ")");
-
-                        out.println("Registered");
-
-                        stmt.close();
-                        con.close();
-                    } 
-                    catch(SQLException e) { 
-                        out.println("SQLException caught: " + e.getMessage()); 
+                    if (request.getParameter("signup") != null && profile != null && !profile.isEmpty() && zip != null && !zip.isEmpty()) {
+                        try {
+                            Connection con = DriverManager.getConnection(db, user, password);
+                            String query = "INSERT INTO `cs157aprojectteam6`.`Users` (profileName, zip) VALUES (?, ?)";
+                            try (PreparedStatement pstmt = con.prepareStatement(query)) {
+                                pstmt.setString(1, profile);
+                                pstmt.setString(2, zip);
+                                int rowsAffected = pstmt.executeUpdate();
+                                if (rowsAffected > 0) {
+                                    success = true;
+                                }
+                            } catch (SQLException e) {
+                                out.println("PreparedStatement error: " + e.getMessage());
+                            }
+                            con.close();
+                        } catch (SQLException e) {
+                            out.println("Connection error: " + e.getMessage());
+                        }
+                    } else if (request.getParameter("signup") != null) {
+                        out.println("Invalid input. Please provide valid values for profile and zip.");
                     }
-            	%>
+                %>
                 </h1><br>
-            	<a href = "search.html">Search</a><br><br>
-            	<a href = "movie.jsp">WatchList</a><br>
+                <form method="post">
+                    Profile Name: <input type="text" name="profile"><br>
+                    Zip: <input type="text" name="zip"><br>
+                    <input type="submit" name="signup" value="Sign Up">
+                </form>
+                <%
+                    if (success) {
+                %>
+                    Registered<br><br>
+                    <a href="login.jsp">Login</a><br><br>
+                <%
+                    } else if (request.getParameter("signup") != null && (profile == null || profile.isEmpty())) {
+                %>
+                    <a href="login.html">Login</a><br><br>
+                <%
+                    }
+                %>
+                <button onclick="window.location.href='homepage.html'">Back to Homepage</button>
+            </center>
             </center>
         </div>
 	</body>

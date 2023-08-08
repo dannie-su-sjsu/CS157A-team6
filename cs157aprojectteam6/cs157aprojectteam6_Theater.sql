@@ -16,28 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Actor`
+-- Table structure for table `Theater`
 --
 
-DROP TABLE IF EXISTS `Actor`;
+DROP TABLE IF EXISTS `Theater`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Actor` (
-  `actorID` int NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `yearBorn` int DEFAULT NULL,
-  PRIMARY KEY (`actorID`)
+CREATE TABLE `Theater` (
+  `theaterID` int NOT NULL,
+  `TheaterName` varchar(45) NOT NULL,
+  `zip` int DEFAULT NULL,
+  PRIMARY KEY (`theaterID`,`TheaterName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Actor`
+-- Dumping data for table `Theater`
 --
 
-LOCK TABLES `Actor` WRITE;
-/*!40000 ALTER TABLE `Actor` DISABLE KEYS */;
-INSERT INTO `Actor` VALUES (1,'Zoe Saldana',1978),(2,'Michael B. Jordan',1987),(3,'Keanu Reeves',1964),(4,'Shameik More',1995),(5,'Tom Holland',1996),(6,'Daisy Ridley',1992),(7,'Chris Pratt',1979),(8,'Leonardo DiCaprio',1974),(9,'Tom Cruise',1962),(10,'Tom Hanks',1956),(11,'Margot Robbie',1990);
-/*!40000 ALTER TABLE `Actor` ENABLE KEYS */;
+LOCK TABLES `Theater` WRITE;
+/*!40000 ALTER TABLE `Theater` DISABLE KEYS */;
+INSERT INTO `Theater` VALUES (1,'CinéArts Santana Row',95128),(2,'CineLux Almaden Cinema',95125),(3,'AMC Saratoga 14',95130),(4,'AMC Eastridge 15',95122),(5,'Century 20 Oakridge and XD',95123),(6,'3Below Theaters & Lounge',95113),(7,'Capitol 6 Drive-In & Public Market',95136),(8,'IMAX Dome Theate',95113);
+/*!40000 ALTER TABLE `Theater` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
