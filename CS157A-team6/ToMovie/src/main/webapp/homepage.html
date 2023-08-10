@@ -1,0 +1,55 @@
+<html>
+   <style>
+      div 
+      {
+         background-color: #fdebb5;
+         border-width: 50px;
+         border-style: solid;
+         border-color: #ea8607;
+      }
+      h1
+      {
+         font-size: 80px;
+         font-family: Jockey One;
+      }
+      h2
+      {
+         font-size: 50px;
+         font-family: Jockey One;
+      }
+      form
+      {
+         font-size: 30px;
+         font-family: Jockey One;
+      }
+      button
+      {
+         font-size: 30px;
+         font-family: Jockey One;
+         background-color: #ea8607;
+         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+   </style>
+   <head>
+      <title>ToMovie Homepage</title>
+      </head>
+   <body>
+      <div>
+      <center>
+      <h1>ToMovie</h1>
+      <h2>Looking for something to watch?</h2>
+         <form action = "recommendation.jsp" method="get" id="search_movie">
+            <label for="title"></label>
+            <input type="text" id="title" name="title" size="50">
+            <button type = "submit" value = "search">Search for Movies</button>
+         </form>
+         <form action = "login.html">
+            <button type = "submit" value = "login">Login</button>
+         </form>
+         <form action="signup.jsp">
+            <button type = "submit" value = "signup">Sign Up</button>
+         </form>
+      </center>
+      </div>
+   </body>
+</html>
