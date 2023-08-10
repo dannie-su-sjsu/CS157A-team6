@@ -40,6 +40,10 @@ public class MovieDetailServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	//int movieID = Integer.parseInt(request.getParameter("movieID"));
+        //int rating = Integer.parseInt(request.getParameter("rating"));
+        //MovieDao.updateMovieRating(movieID, rating);
+
     	 String action = request.getParameter("action");
 
          if ("rating".equals(action)) {

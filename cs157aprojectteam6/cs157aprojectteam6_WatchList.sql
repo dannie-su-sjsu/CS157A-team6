@@ -31,7 +31,7 @@ CREATE TABLE `WatchList` (
   UNIQUE KEY `listID_UNIQUE` (`listID`),
   KEY `FK_MovieDetail` (`MovieID`),
   CONSTRAINT `FK_MovieDetail` FOREIGN KEY (`MovieID`) REFERENCES `MovieDetail` (`movieID`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `WatchList` (
 
 LOCK TABLES `WatchList` WRITE;
 /*!40000 ALTER TABLE `WatchList` DISABLE KEYS */;
-INSERT INTO `WatchList` VALUES (33,'Avatar: The Way of Water','Planned',1),(23,'Creed III','In Progress',2),(24,'John Wick: Chapter 4','Watched',3),(26,'Spider-Man: Across the Spider-Verse','Planned',4),(32,'Spider-Man: No Way Home','Planned',5),(29,'Star Wars: The Force Awakens','Planned',6),(31,'The Super Mario Bros. Movie','Planned',7),(36,'Top Gun: Maverick','Planned',9),(27,'Toy Story 3','Planned',10);
+INSERT INTO `WatchList` VALUES (23,'Creed III','In Progress',2),(24,'John Wick: Chapter 4','Watched',3),(26,'Spider-Man: Across the Spider-Verse','Planned',4);
 /*!40000 ALTER TABLE `WatchList` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-10  2:04:21
+-- Dump completed on 2023-08-08 13:06:28
