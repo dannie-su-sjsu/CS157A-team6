@@ -99,7 +99,7 @@ public class MovieDao {
 		return entry;
 	}
 	
-	
+	//Method gets film details by title
 	public static MovieList getFilmDetailByTitle(String title) {
 	    MovieList movieDetail = null;
 	    try {
@@ -123,7 +123,8 @@ public class MovieDao {
 	    }
 	    return movieDetail;
 	}
-
+	
+	//Method gets movie title by MovieID
 	public static String getMovieTitleByID(int movieID) {
 		 String title = null;
 		    try {
@@ -140,7 +141,8 @@ public class MovieDao {
 		    }
 		    return title;
 	}
-
+	
+	//Method gets film detail by movieID
 	public static MovieList getFilmDetailByMovieID(int movieID) {
 	    MovieList movieDetail = null;
 	    try {
@@ -163,6 +165,7 @@ public class MovieDao {
 	    return movieDetail;
 	}
 	
+	//Method gets movie by title
 	public static MovieList getMovieByTitle(String title) {
         MovieList movieDetail = null;
         ResultSet rs = null;
@@ -183,7 +186,8 @@ public class MovieDao {
         } 
         return movieDetail;
     }
-
+	
+	//Method updates movie rating
 	public static void updateMovieRating(int movieID, int rating) {
 	    try {
 	        Connection con = MovieDao.getConnection();
@@ -197,7 +201,8 @@ public class MovieDao {
 	        e.printStackTrace();
 	    }
 	}
-
+	
+	//Method saves movie comment
 	public static void saveMovieComment(int movieID, String comment) {
         try {
             Connection con = getConnection();
@@ -212,6 +217,7 @@ public class MovieDao {
         }
     }
 	
+	//Method gets all genres in Movie table
 	public static List<String> getAllGenres() {
         List<String> genres = new ArrayList<>();
         try (Connection con = getConnection();
@@ -226,6 +232,7 @@ public class MovieDao {
         return genres;
     }
 	
+	//Method gets all actors in the Starred table
 	public static List<String> getAllActors() {
 	    List<String> actors = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -240,6 +247,7 @@ public class MovieDao {
 	    return actors;
 	}
 	
+	//Method gets all directors in the directed table
 	public static List<String> getAllDirectors() {
 	    List<String> directors = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -254,6 +262,7 @@ public class MovieDao {
 	    return directors;
 	}
 	
+	//Method gets all lengths of the films in the Movie table
 	public static List<Integer> getAllLengths() {
 	    List<Integer> lengths = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -268,6 +277,7 @@ public class MovieDao {
 	    return lengths;
 	}
 	
+	//Method gets all ratings in the MovieDetail table
 	public static List<Integer> getAllRatings() {
 	    List<Integer> ratings = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -282,6 +292,7 @@ public class MovieDao {
 	    return ratings;
 	}
 	
+	//Method gets all zip codes in the Theater table
 	public static List<Integer> getAllZips() {
 	    List<Integer> zips = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -295,6 +306,8 @@ public class MovieDao {
 	    }
 	    return zips;
 	}
+	
+	//Method gets the theater detemined by zip 
 	public static List<String> getTheaterByZip(String zip) {
 	    List<String> theaters = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -310,6 +323,7 @@ public class MovieDao {
 	    return theaters;
 	}
 	
+	//Method gets the film that matches the genre
 	public static List<String> getFilmsByGenre(String genre) {
 	    List<String> filmTitles = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -324,6 +338,8 @@ public class MovieDao {
 	    }
 	    return filmTitles;
 	}
+	
+	//Method gets the film that matches the actor
 	public static List<String> getFilmsByActors(String ActorName) {
 	    List<String> filmTitles = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -338,6 +354,8 @@ public class MovieDao {
 	    }
 	    return filmTitles;
 	}
+	
+	//Method gets the film that matches the director
 	public static List<String> getFilmsByDirectors(String DirectorName) {
 	    List<String> filmTitles = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -352,6 +370,8 @@ public class MovieDao {
 	    }
 	    return filmTitles;
 	}
+	
+	//Method gets the film that matches the length runtime
 	public static List<String> getFilmsByLength(String length) {
 	    List<String> filmTitles = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -367,6 +387,7 @@ public class MovieDao {
 	    return filmTitles;
 	}
 	
+	//Method gets the film that matches the rating made by the user
 	public static List<String> getFilmsByRatings(String rating) {
 	    List<String> filmTitles = new ArrayList<>();
 	    try (Connection con = getConnection();
@@ -382,6 +403,7 @@ public class MovieDao {
 	    return filmTitles;
 	}
 	
+	//Method inserts the films into the SearchRecommendations table
 	public static void insertSearchRecommendations(List<String> filmTitles) {
 	    try (Connection con = getConnection()) {
 	        for (String title : filmTitles) {
@@ -393,7 +415,8 @@ public class MovieDao {
 	        e.printStackTrace();
 	    }
 	}
-
+	
+	//Method gets the films from the SearchRecommendations table
 	public static List<MovieList> getSearchRecommendations() {
 	    List<MovieList> list = new ArrayList<>();
 	    try (
@@ -411,6 +434,7 @@ public class MovieDao {
 	    return list;
 	}
 	
+	//Method clearss the films from the SearchRecommendations table
 	public static void clearSearchRecommendations() {
 	    try (Connection con = getConnection()) {
 	        PreparedStatement pstmt = con.prepareStatement("DELETE FROM `cs157aprojectteam6`.`SearchRecommendations`");

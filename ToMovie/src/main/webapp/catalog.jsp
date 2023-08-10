@@ -18,7 +18,7 @@
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
             table = document.getElementById("filmCatalogTable");
             switching = true;
-            // Set the sorting direction to ascending
+            // Set the sorting direction to ascending to descending depending on clicks
             dir = "asc";
             while (switching) {
                 switching = false;
@@ -58,7 +58,6 @@
             // Add highlighting to the sorted column header
             headers[n].classList.add("highlight");
         }
-
         // Attach click event to each header for sorting
         var headers = document.querySelectorAll("#filmCatalogTable th");
         for (var i = 0; i < headers.length; i++) {

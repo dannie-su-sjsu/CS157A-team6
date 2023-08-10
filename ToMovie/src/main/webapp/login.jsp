@@ -80,7 +80,7 @@
         	    <br>
         	    <a href="recommendation.jsp">Search for Movies</a><br><br>
         	    <a href="movie.jsp">Watch List</a><br><br>
-                <a href="theater.html">Look for nearby Theaters</a><br><br>
+                <a href="theater.jsp">Look for nearby Theaters</a><br><br>
             </div>
         </center>
 	</body>

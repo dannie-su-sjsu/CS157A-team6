@@ -30,7 +30,6 @@
                     tableRow.parentNode.removeChild(tableRow);
                 }
             };
-
             xhr.send("title=" + encodeURIComponent(title));
         }
         // Reload the page regardless of the user's choice

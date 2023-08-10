@@ -84,7 +84,7 @@
                     if (success) {
                 %>
                     Registered<br><br>
-                    <a href="login.jsp">Login</a><br><br>
+                    <a href="login.html">Login</a><br><br>
                 <%
                     } else if (request.getParameter("signup") != null && (profile == null || profile.isEmpty())) {
                 %>

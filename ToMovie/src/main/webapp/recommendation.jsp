@@ -49,7 +49,6 @@
     });
 
     function clearResults() {
-        // Make an AJAX request to clear the results from the servlet
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "FilterServlet", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -61,7 +60,6 @@
                 }
             }
         };
-
         xhr.send("clearResults=true");
     }
 
@@ -141,9 +139,6 @@
 	        <% } %>
 	    </tbody>
 	</table>
-    <br>
-    <button id="resetFilterButton">Reset Filter</button>
-    <br>
     <br>
     <h2>Checkout What Films are Playing in Your Area <a href="theater.jsp">Here</a></h2>
     <a href="movie.jsp">Go Back to Watchlist</a>

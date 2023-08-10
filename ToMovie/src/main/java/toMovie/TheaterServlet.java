@@ -35,12 +35,8 @@ public class TheaterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  String selectedZip = request.getParameter("zipSelect");
-
-	        // Call the DAO method to get theaters by the selected zip
-	        List<String> theaters = MovieDao.getTheaterByZip(selectedZip);
-
-	        // Pass theaters data to JSP or perform other actions
-	        request.setAttribute("theaters", theaters);
-	        request.getRequestDispatcher("theater.jsp").forward(request, response);
+	      List<String> theaters = MovieDao.getTheaterByZip(selectedZip);
+	      request.setAttribute("theaters", theaters);
+	      request.getRequestDispatcher("theater.jsp").forward(request, response);
 
 }}

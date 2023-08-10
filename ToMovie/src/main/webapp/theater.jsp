@@ -97,7 +97,6 @@
             <label for="title"></label>
             <button type = "submit" value = "search">Search for Movies</button>
          </form>
-         <a href="recommendation.jsp">Go Back to Recommendations</a>
 		 <br><a href="movie.jsp">Go Back to Watchlist</a>
 			</div>
 		</center>
